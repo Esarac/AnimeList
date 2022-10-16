@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-sans{
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
