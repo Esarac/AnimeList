@@ -1,20 +1,21 @@
 import axios from "../config/axios";
-import { loginResponse, User } from "../models/login";
+import { LogInResponse, SignInResponse, User } from "../models/login";
 
 const BASE_URL = "https://www.mecallapi.com/api"
 
 export const logIn = async(username: string, password: string) =>{
-    const {data} = await axios.post(`${BASE_URL}/login`,
+    const {data} = await axios.post<LogInResponse>(`${BASE_URL}/login`,
     {
-        "username": "Voodlyc567",
-        "password": "Voodlyc567"
+        "username": username,
+        "password": password,
+        "expiresIn":70000
     })
 
     return data;
 }
 
 export const signIn = async(user: User) => {
-    const {data} = await axios.post<loginResponse>(`${BASE_URL}/users/create`, user)
-
+    const {data} = await axios.post<SignInResponse>(`${BASE_URL}/users/create`, user)
+    console.log(data)
     return data;
 }

@@ -10,14 +10,15 @@ function MemeContainer() {
     const [page, setPage] = useState<number>(1)
     const [haveNextPage, setHaveNextPage] = useState<boolean>(true)
 
-
     useEffect(() => {
         getMemesByPage(page)
             .then((v) => {
                 setMemes(v.data)
                 setHaveNextPage(v.next !== undefined)
             })
-            .catch((e) => console.log(e))
+            .catch((e) => {
+                console.log(e)
+            })
     }, [page])
 
     const goPrevPage = () => {

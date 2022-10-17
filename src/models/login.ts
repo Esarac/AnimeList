@@ -1,4 +1,4 @@
-export interface loginResponse {
+export interface SignInResponse {
     status: string,
     message: string,
     user: UserWithId
@@ -15,4 +15,9 @@ export interface User {
     password: string,
     email: string,
     avatar: string
+}
+
+export interface LogInResponse extends SignInResponse {
+    accessToken: string,
+    expiresIn: number,
 }
