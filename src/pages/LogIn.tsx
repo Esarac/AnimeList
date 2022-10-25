@@ -4,14 +4,14 @@ import InputForm from '../components/InputForm'
 import { logIn } from '../services/userService'
 
 function LogIn() {
-    const [username, setUsername] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
     const [alertVariant, setAlertVariant] = useState<string>('danger')
     const [alertText, setAlertText] = useState<string>('')
 
     const submit = () => {
-        logIn(username, password)
+        logIn(email, password)
             .then((v) => {
                 setAlert("User logged in successfully", 'success')
                 window.location.reload();
@@ -34,10 +34,10 @@ function LogIn() {
             <form>
                 <InputForm
                     className='form-group m-2'
-                    fieldName='Username'
-                    fieldId='username'
-                    fieldType='text'
-                    setter={setUsername}
+                    fieldName='Email'
+                    fieldId='email'
+                    fieldType='email'
+                    setter={setEmail}
                 />
                 <InputForm
                     className='form-group m-2'
