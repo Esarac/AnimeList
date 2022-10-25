@@ -35,13 +35,10 @@ function SignIn() {
 
         signIn(user)
             .then((v) => {
-                if (v.status === 'error')
-                    setAlert(v.message, 'danger')
-                else
-                    setAlert(v.message, 'success')
+                setAlert(v.username, 'success')
             })
             .catch((e) => {
-                setAlert(e.response.data.message, 'danger')
+                setAlert(JSON.stringify(e), 'danger')
             })
     }
 

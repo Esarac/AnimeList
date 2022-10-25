@@ -5,7 +5,8 @@ export interface SignInResponse {
 }
 
 export interface UserWithId extends User{
-    id: number
+    uid: string,
+    authProvider: string
 }
 
 export interface User {

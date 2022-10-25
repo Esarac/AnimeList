@@ -13,13 +13,10 @@ function LogIn() {
     const submit = () => {
         logIn(username, password)
             .then((v) => {
-                if (v.status === 'error')
-                    setAlert(v.message, 'danger')
-                else
-                    setAlert(v.message, 'success')
+                setAlert("User logged in successfully", 'success')
             })
             .catch((e) => {
-                setAlert(e.response.data.message, 'danger')
+                setAlert(JSON.stringify(e), 'danger')
             })
     }
 

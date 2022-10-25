@@ -1,21 +1,33 @@
-import axios from "../config/axios";
-import { LogInResponse, SignInResponse, User } from "../models/login";
-
-const BASE_URL = "https://www.mecallapi.com/api"
-
-export const logIn = async(username: string, password: string) =>{
-    const {data} = await axios.post<LogInResponse>(`${BASE_URL}/login`,
-    {
-        "username": username,
-        "password": password,
-        "expiresIn":70000
-    })
-
-    return data;
-}
+import { createUser, signInUser, addData, getData } from "../config/firebase";
+import { User, UserWithId } from "../models/login";
 
 export const signIn = async(user: User) => {
-    const {data} = await axios.post<SignInResponse>(`${BASE_URL}/users/create`, user)
-    console.log(data)
-    return data;
+    const userCredential = await createUser(user.email, user.password)
+
+    const firestoreUser: UserWithId = {
+        uid: userCredential.user.uid,
+        authProvider: "local",
+        ...user
+    }
+
+    await addData("users", firestoreUser.uid, firestoreUser)
+
+    const createdUser: UserWithId = await getUser(userCredential.user.uid) as UserWithId
+
+    return createdUser;
+}
+
+export const logIn = async(email: string, password: string) =>{
+    const userCredential = await signInUser(email, password);
+    
+    const user = await getUser(userCredential.user.uid) as UserWithId;
+
+    console.log(user)
+    return user;
+}
+
+async function getUser(uid: string): Promise<UserWithId | null> {
+    const user: UserWithId = (await getData("users", uid)).data() as UserWithId;
+
+    return user;
 }
