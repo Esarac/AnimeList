@@ -1,5 +1,7 @@
 import { createUser, signInUser, addData, getData } from "../config/firebase";
 import { User, UserWithId } from "../models/login";
+import store from "../config/redux/store";
+import { userActions } from "../config/redux/userSlice";
 
 export const signIn = async(user: User) => {
     const userCredential = await createUser(user.email, user.password)
@@ -14,7 +16,7 @@ export const signIn = async(user: User) => {
 
     const createdUser: UserWithId = await getUser(userCredential.user.uid) as UserWithId
 
-    return createdUser;
+    store.dispatch(userActions.logIn(createdUser))
 }
 
 export const logIn = async(email: string, password: string) =>{
@@ -22,8 +24,11 @@ export const logIn = async(email: string, password: string) =>{
     
     const user = await getUser(userCredential.user.uid) as UserWithId;
 
-    console.log(user)
-    return user;
+    store.dispatch(userActions.logIn(user))
+}
+
+export const addFavorite = async(mal_id: number) => {
+    
 }
 
 async function getUser(uid: string): Promise<UserWithId | null> {

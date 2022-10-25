@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Alert, Button } from 'react-bootstrap'
 import InputForm from '../components/InputForm'
-import { logIn } from '../services/loginService'
+import { logIn } from '../services/userService'
 
 function LogIn() {
     const [username, setUsername] = useState<string>('')
@@ -14,6 +14,7 @@ function LogIn() {
         logIn(username, password)
             .then((v) => {
                 setAlert("User logged in successfully", 'success')
+                window.location.reload();
             })
             .catch((e) => {
                 setAlert(JSON.stringify(e), 'danger')

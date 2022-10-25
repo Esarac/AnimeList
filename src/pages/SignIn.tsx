@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Alert, Button } from 'react-bootstrap'
 import { User } from '../models/login'
-import { signIn } from '../services/loginService'
+import { signIn } from '../services/userService'
 import InputForm from '../components/InputForm'
 
 const AVATAR = "https://www.melivecode.com/users/cat.png"
@@ -36,6 +36,7 @@ function SignIn() {
         signIn(user)
             .then((v) => {
                 setAlert("User successfully created", 'success')
+                window.location.reload();
             })
             .catch((e) => {
                 setAlert(JSON.stringify(e), 'danger')
