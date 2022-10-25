@@ -4,9 +4,9 @@ import Container from 'react-bootstrap/esm/Container'
 
 function Header() {
   return (
-    <Navbar bg="dark" expand="lg" className='text-light text-sans'>
+    <Navbar bg="dark" expand="lg" className='text-light text-monaco'>
       <Container>
-        <Navbar.Brand className='text-light' href="/">Meme Maker</Navbar.Brand>
+        <Navbar.Brand className='text-light' href="/">AnimeList</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

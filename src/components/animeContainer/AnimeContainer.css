@@ -1,0 +1,10 @@
+.text-impact{
+    font-size: medium;
+    font-family: Impact;
+    -webkit-text-stroke: 1.5px black;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}

@@ -35,7 +35,7 @@ function SignIn() {
 
         signIn(user)
             .then((v) => {
-                setAlert(v.username, 'success')
+                setAlert("User successfully created", 'success')
             })
             .catch((e) => {
                 setAlert(JSON.stringify(e), 'danger')
