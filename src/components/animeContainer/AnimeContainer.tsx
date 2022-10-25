@@ -12,7 +12,6 @@ interface Props{
 export default function AnimeContainer(props: Props) {
     return (
         <div className="container p-2 text-monaco">
-            <h1 className='text-center'>Animes</h1>
             <div className='row justify-content-center'>
                 {props.animes.map(anime => AnimeElement(anime, props.onLike))}
             </div>
@@ -23,7 +22,7 @@ export default function AnimeContainer(props: Props) {
 const AnimeElement = (anime: AnimeWithLike, onLike: (id: number) => void) => {
     const tags = anime.genres.map((genre, index)=>{
         return(
-            <Badge key={index} bg="secondary" className='m-1'>
+            <Badge key={index} bg="danger" className='m-1'>
                 <a href={genre.url}>{genre.name}</a>
             </Badge>
         )

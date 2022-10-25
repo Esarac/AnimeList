@@ -30,7 +30,8 @@ function SignIn() {
             username,
             password,
             email,
-            avatar: AVATAR
+            avatar: AVATAR,
+            favorites: []
         }
 
         signIn(user)
@@ -39,7 +40,7 @@ function SignIn() {
                 window.location.reload();
             })
             .catch((e) => {
-                setAlert(JSON.stringify(e), 'danger')
+                setAlert(e.code, 'danger')
             })
     }
 
@@ -51,7 +52,7 @@ function SignIn() {
     const showAlert = () => alertText ? true : false
 
     return (
-        <div className='container p-2 text-sans'>
+        <div className='container p-2 text-monaco'>
             <h1 className='text-center'>Sign In</h1>
             <form>
                 <InputForm

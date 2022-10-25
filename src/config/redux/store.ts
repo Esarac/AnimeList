@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { UserWithId } from '../../models/login'
 import userReducer from './userSlice'
 
@@ -29,6 +29,7 @@ const store = configureStore({
 
 store.subscribe(()=>{
     saveToLocalStorage(store.getState());
+    console.log('Update state', store.getState())
 })
 
 export default store;

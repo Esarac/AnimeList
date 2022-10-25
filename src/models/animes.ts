@@ -1,6 +1,10 @@
-export interface AnimeResponse{
+export interface AnimesResponse{
     pagination: Pagination
     data: Anime[]
+}
+
+export interface AnimeResponse {
+    data: Anime
 }
 
 export interface Pagination{

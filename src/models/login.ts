@@ -1,3 +1,5 @@
+import { AnimeWithLike } from "./animes"
+
 export interface SignInResponse {
     status: string,
     message: string,
@@ -16,6 +18,7 @@ export interface User {
     password: string,
     email: string,
     avatar: string
+    favorites: AnimeWithLike[]
 }
 
 export interface LogInResponse extends SignInResponse {

@@ -17,7 +17,7 @@ function LogIn() {
                 window.location.reload();
             })
             .catch((e) => {
-                setAlert(JSON.stringify(e), 'danger')
+                setAlert(e.code, 'danger')
             })
     }
 
@@ -29,7 +29,7 @@ function LogIn() {
     const showAlert = () => alertText ? true : false
 
     return (
-        <div className='container p-2 text-sans'>
+        <div className='container p-2 text-monaco'>
             <h1 className='text-center'>Log In</h1>
             <form>
                 <InputForm
